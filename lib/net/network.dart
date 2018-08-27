@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:volleystats/model/standings.dart';
 import 'package:volleystats/model/tournamentinfo.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/net/SecretLoader.dart';
@@ -9,9 +10,9 @@ import 'package:volleystats/net/SecretLoader.dart';
 String tournamentsURL =
     "http://api.sportradar.com/volleyball-t1/indoor/en/tournaments.json?api_key=";
 
-String tournamentInfoURL_1 = "http://api.sportradar.com/volleyball-t1/indoor/en/tournaments/";
-
-String tournamentInfoURL_2 = "/info.json?api_key=";
+String tournamentBasePath = "http://api.sportradar.com/volleyball-t1/indoor/en/tournaments/";
+String infoPath = "/info.json?api_key=";
+String standingsPath = "/live_standings.json?api_key=";
 
 Future<Tournaments> fetchTournaments(http.Client client) async {
   Secret secret = await SecretLoader(secretPath: "secrets.json").loadSRApiKey();
@@ -32,12 +33,29 @@ Future<Tournaments> fetchTournaments(http.Client client) async {
 
 Future<TournamentInfo> fetchTournamentInfo(http.Client client, String tournamentId) async {
   Secret secret = await SecretLoader(secretPath: "secrets.json").loadSRApiKey();
-  final response = await client.get(tournamentInfoURL_1 + tournamentId + tournamentInfoURL_2 + secret.apiKey);
+  final response = await client.get(tournamentBasePath + tournamentId + infoPath + secret.apiKey);
 
   if (response.statusCode == 200) {
     // If server returns an OK response, parse the JSON
     try {
       return TournamentInfo.fromJson(json.decode(response.body));
+    } catch (e) {
+      print(e.toString());
+    }
+  } else {
+    // If that response was not OK, throw an error.
+    throw Exception('Failed to load TournamentInfo ' + response.reasonPhrase);
+  }
+}
+
+Future<List<Standings>> fetchTournamentStandings(http.Client client, String tournamentId) async {
+  Secret secret = await SecretLoader(secretPath: "secrets.json").loadSRApiKey();
+  final response = await client.get(tournamentBasePath + tournamentId + standingsPath + secret.apiKey);
+
+  if (response.statusCode == 200) {
+    // If server returns an OK response, parse the JSON
+    try {
+      return Standings.fromJson(json.decode(response.body)) as List;
     } catch (e) {
       print(e.toString());
     }
