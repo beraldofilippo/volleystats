@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:volleystats/model/tournamentinfo.dart';
+import 'package:volleystats/widget/EmptyPageWidget.dart';
 
 class GroupsGrid extends StatelessWidget {
   final TournamentInfo tournamentInfo;
@@ -14,19 +15,29 @@ class GroupsGrid extends StatelessWidget {
       ),
       itemCount: tournamentInfo.groups.length,
       itemBuilder: (context, index) {
-//        if(tournamentInfo.groups.length == 0) // TODO provide empty page state
-        return InkWell(
-            child: Card(
-                child: new Center(
-                    child: new Container(
-          margin: const EdgeInsets.all(10.0),
-          child: new Column(children: <Widget>[
-            Text(
-              "Group " + tournamentInfo.groups[index].name,
-            ),
-          ]),
-        ))));
+        if (tournamentInfo.groups.length == 0) {
+          return new EmptyPageWidget();
+        } else {
+          return InkWell(
+              child: Card(
+                  child: new Center(
+                      child: new Container(
+            margin: const EdgeInsets.all(10.0),
+            child: new Column(children: <Widget>[
+              getCardLayout(index),
+            ]),
+          ))));
+        }
       },
     );
+  }
+
+  Text getCardLayout(int index) {
+    if (tournamentInfo.groups[index].name != null &&
+        tournamentInfo.groups[index].name.isNotEmpty) {
+      return Text("Group " + tournamentInfo.groups[index].name);
+    } else {
+      return Text("Single group tournament");
+    }
   }
 }
