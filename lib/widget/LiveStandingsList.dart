@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:volleystats/model/livestandings.dart';
 import 'package:volleystats/model/standingsteamentry.dart';
+import 'package:volleystats/widget/EmptyPageWidget.dart';
 
 class LiveStandingsList extends StatelessWidget {
   final LiveStandings livestandings;
@@ -9,40 +10,43 @@ class LiveStandingsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> tiles = List<Widget>();
+    if (livestandings.standings != null && livestandings.standings.length == 0) {
+      return new EmptyPageWidget();
+    } else {
+      List<Widget> tiles = List<Widget>();
 
-    for (var standings in livestandings.standings) {
-      for (var standingsgroup in standings.groups) {
-        var secondaryTiles = List<Widget>();
-        for (var standingsteamentry in standingsgroup.team_standings) {
-          secondaryTiles.add(buildListTileRow(standingsteamentry));
+      for (var standings in livestandings.standings) {
+        for (var standingsgroup in standings.groups) {
+          var secondaryTiles = List<Widget>();
+          for (var standingsteamentry in standingsgroup.team_standings) {
+            secondaryTiles.add(buildListTileRow(standingsteamentry));
+          }
+          tiles.add(new ExpansionTile(
+            leading: new ExcludeSemantics(
+                child:
+                new CircleAvatar(
+                    radius: 20.0,
+                    child: new Text(standingsgroup.group_name))),
+            title: new Text(standingsgroup.name),
+            initiallyExpanded: true,
+            children: secondaryTiles,
+          ));
         }
-        tiles.add(new ExpansionTile(
-          leading: new ExcludeSemantics(
-              child:
-                  new CircleAvatar(
-                      radius: 20.0,
-                      child: new Text(standingsgroup.group_name))),
-          title: new Text(standingsgroup.name),
-          initiallyExpanded: true,
-          children: secondaryTiles,
-        ));
       }
-    }
 
-    List<Widget> listTilesReady =
-        ListTile.divideTiles(context: context, tiles: tiles).toList();
+      List<Widget> listTilesReady =
+      ListTile.divideTiles(context: context, tiles: tiles).toList();
 
-    return new Scaffold(
-      body: new Scrollbar(
-        child: new ListView(
-          padding: new EdgeInsets.symmetric(vertical: 4.0),
-          children: listTilesReady,
+      return new Scaffold(
+        body: new Scrollbar(
+          child: new ListView(
+            padding: new EdgeInsets.symmetric(vertical: 4.0),
+            children: listTilesReady,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
-
   buildListTileRow(StandingsTeamEntry standingsteamentry) {
     return new ListTile(
       leading: new ExcludeSemantics(
