@@ -8,4 +8,6 @@ Many times the API fails with a 403 Forbidden because it's using a sandbox envir
 
 ### TODO
 Add other sub screens to the tournament details page.  
-Add cached responses for HTTP GETs.
+Add cached responses for HTTP GETs.  
+Adopt some kind of architecture LOL.  
+Refine UI.
