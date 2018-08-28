@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:volleystats/model/standings.dart';
+import 'package:volleystats/model/livestandings.dart';
 import 'package:volleystats/model/tournamentinfo.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/net/SecretLoader.dart';
@@ -48,19 +48,19 @@ Future<TournamentInfo> fetchTournamentInfo(http.Client client, String tournament
   }
 }
 
-Future<List<Standings>> fetchTournamentStandings(http.Client client, String tournamentId) async {
+Future<LiveStandings> fetchTournamentStandings(http.Client client, String tournamentId) async {
   Secret secret = await SecretLoader(secretPath: "secrets.json").loadSRApiKey();
   final response = await client.get(tournamentBasePath + tournamentId + standingsPath + secret.apiKey);
 
   if (response.statusCode == 200) {
     // If server returns an OK response, parse the JSON
     try {
-      return Standings.fromJson(json.decode(response.body)) as List;
+      return LiveStandings.fromJson(json.decode(response.body));
     } catch (e) {
       print(e.toString());
     }
   } else {
     // If that response was not OK, throw an error.
-    throw Exception('Failed to load TournamentInfo ' + response.reasonPhrase);
+    throw Exception('Failed to load Standings ' + response.reasonPhrase);
   }
 }

@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:volleystats/model/livestandings.dart';
+import 'package:volleystats/net/network.dart';
+import 'package:volleystats/screens/detail/detailpage.dart';
+import 'package:volleystats/screens/errorwidget.dart';
+import 'package:volleystats/widget/LiveStandingsList.dart';
+import 'package:volleystats/widget/WidgetUtil.dart';
+
+class LiveStandingsPage extends StatefulWidget {
+  LiveStandingsPage({Key key, this.title, this.detailPage}) : super(key: key);
+
+  final String title;
+  final DetailPage detailPage;
+
+  @override
+  _LiveStandingsPageState createState() => new _LiveStandingsPageState();
+}
+
+class _LiveStandingsPageState extends State<LiveStandingsPage> {
+  LiveStandings _standings;
+
+  getBody() {
+    return FutureBuilder<LiveStandings>(
+      future: fetchTournamentStandings(http.Client(), widget.detailPage.getTournamentId()),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return getProgressDialog();
+          default:
+            if (snapshot.hasError) {
+              return NetworkErrorWidget(onTapCallback: () => setState(() {}));
+            } else if (snapshot.hasData) {
+              _standings = snapshot.data;
+            }
+
+            return _standings != null
+                ? LiveStandingsList(livestandings: snapshot.data)
+                : NetworkErrorWidget(onTapCallback: () => setState(() {}));
+        }
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: new Text(widget.title),
+        ),
+        body: getBody()// This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}

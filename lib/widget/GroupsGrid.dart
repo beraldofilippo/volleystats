@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:volleystats/model/tournamentinfo.dart';
 
-class GroupsList extends StatelessWidget {
+class GroupsGrid extends StatelessWidget {
   final TournamentInfo tournamentInfo;
 
-  GroupsList({Key key, this.tournamentInfo}) : super(key: key);
+  GroupsGrid({Key key, this.tournamentInfo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,7 @@ class GroupsList extends StatelessWidget {
       ),
       itemCount: tournamentInfo.groups.length,
       itemBuilder: (context, index) {
+//        if(tournamentInfo.groups.length == 0) // TODO provide empty page state
         return InkWell(
             child: Card(
                 child: new Center(

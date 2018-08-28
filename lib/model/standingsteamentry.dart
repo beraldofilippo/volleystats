@@ -19,7 +19,7 @@ class StandingsTeamEntry {
       this.current_outcome, this.team);
 
   StandingsTeamEntry.fromJson(Map<String, dynamic> json)
-      : team  = Team.fromJson(json),
+      : team  = Team.fromJson(json['team']),
         current_outcome = json['current_outcome'],
         rank = json['rank'],
         played = json['played'],

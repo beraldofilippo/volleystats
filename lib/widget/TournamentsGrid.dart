@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/navigator.dart';
 
-class TournamentList extends StatelessWidget {
+class TournamentsGrid extends StatelessWidget {
   final Tournaments tournaments;
 
-  TournamentList({Key key, this.tournaments}) : super(key: key);
+  TournamentsGrid({Key key, this.tournaments}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class TournamentList extends StatelessWidget {
       ),
       itemCount: tournaments.tournaments.length,
       itemBuilder: (context, index) {
+//        if(tournaments.tournaments.length == 0) // TODO provide empty page state
         return InkWell(
             onTap: () => launchTournamentDetail(context, tournaments.tournaments[index].id),
             child: Card(

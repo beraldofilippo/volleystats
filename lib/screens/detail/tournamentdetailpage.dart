@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:volleystats/screens/detail/detailpage.dart';
 import 'package:volleystats/screens/detail/groupspage.dart';
+import 'package:volleystats/screens/detail/livestandingspage.dart';
 
 class NavigationIconView {
   NavigationIconView({
@@ -115,7 +116,7 @@ class TournamentDetailPage extends StatefulWidget implements DetailPage {
 class _TournamentDetailPageState extends State<TournamentDetailPage>
     with TickerProviderStateMixin {
   int _currentIndex = 0;
-  BottomNavigationBarType _type = BottomNavigationBarType.shifting;
+  BottomNavigationBarType _type = BottomNavigationBarType.fixed;
   List<NavigationIconView> _navigationViews;
 
   @override
@@ -132,7 +133,7 @@ class _TournamentDetailPageState extends State<TournamentDetailPage>
       new NavigationIconView(
         activeIcon: const Icon(Icons.cloud),
         icon: const Icon(Icons.cloud_queue),
-        title: 'Live Standings',
+        title: 'Live',
         color: Colors.teal,
         vsync: this,
       ),
@@ -173,6 +174,8 @@ class _TournamentDetailPageState extends State<TournamentDetailPage>
     switch (_currentIndex) {
       case 0:
         return new GroupsPage(title: "Groups", detailPage: widget);
+      case 1:
+        return new LiveStandingsPage(title: "Live Standings", detailPage: widget);
       default:
         return new GroupsPage(title: "Groups", detailPage: widget);
     }

@@ -4,7 +4,7 @@ import 'package:volleystats/model/tournamentinfo.dart';
 import 'package:volleystats/net/network.dart';
 import 'package:volleystats/screens/detail/detailpage.dart';
 import 'package:volleystats/screens/errorwidget.dart';
-import 'package:volleystats/widget/GroupsList.dart';
+import 'package:volleystats/widget/GroupsGrid.dart';
 import 'package:volleystats/widget/WidgetUtil.dart';
 
 class GroupsPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class _GroupsPageState extends State<GroupsPage> {
             }
 
             return _tournamentInfo != null
-                ? GroupsList(tournamentInfo: snapshot.data)
+                ? GroupsGrid(tournamentInfo: snapshot.data)
                 : NetworkErrorWidget(onTapCallback: () => setState(() {}));
         }
       },
