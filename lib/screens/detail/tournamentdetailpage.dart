@@ -133,16 +133,16 @@ class _TournamentDetailPageState extends State<TournamentDetailPage>
         title: 'Live',
         vsync: this,
       ),
-      new NavigationIconView(
-        icon: const Icon(Icons.event_available),
-        title: 'Results',
-        vsync: this,
-      ),
-      new NavigationIconView(
-        icon: const Icon(Icons.event),
-        title: 'Schedule',
-        vsync: this,
-      )
+//      TODO new NavigationIconView(
+//        icon: const Icon(Icons.event_available),
+//        title: 'Results',
+//        vsync: this,
+//      ),
+//      TODO new NavigationIconView(
+//        icon: const Icon(Icons.event),
+//        title: 'Schedule',
+//        vsync: this,
+//      )
     ];
 
     for (NavigationIconView view in _navigationViews)

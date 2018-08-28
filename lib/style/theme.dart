@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:volleystats/style/colors.dart';
 
-final ThemeData themeData =
-    new ThemeData(
-        primarySwatch: ThemeColors.getSwatch(),
-        fontFamily: 'Nunito');
+final ThemeData themeData = new ThemeData(
+    platform: TargetPlatform.fuchsia,
+    primarySwatch: Colors.red,
+    fontFamily: 'Nunito');
 
 ThemeData getThemeData() {
   return themeData;
