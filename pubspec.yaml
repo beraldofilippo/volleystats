@@ -63,8 +63,13 @@ flutter:
   # see https://flutter.io/custom-fonts/#from-packages
 
   fonts:
-    - family: Noto
+  # https://fonts.google.com/specimen/Nunito
+    - family: Nunito
       fonts:
-        - asset: fonts/NotoSans-Regular.ttf
-        - asset: fonts/NotoSans-Bold.ttf
-          weight: 700
+        - asset: fonts/Nunito/Nunito-Regular.ttf
+        - asset: fonts/Nunito/Nunito-Light.ttf
+          weight: 500
+        - asset: fonts/Nunito/Nunito-Bold.ttf
+          weight: 900
+        - asset: fonts/Nunito/Nunito-Italic.ttf
+          style: italic
