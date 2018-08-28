@@ -17,7 +17,8 @@ class TournamentsGrid extends StatelessWidget {
       itemBuilder: (context, index) {
 //        if(tournaments.tournaments.length == 0) // TODO provide empty page state
         return InkWell(
-            onTap: () => launchTournamentDetail(context, tournaments.tournaments[index].id),
+            onTap: () => launchTournamentDetail(
+                context, tournaments.tournaments[index].id),
             child: Card(
                 child: new Center(
                     child: new Container(

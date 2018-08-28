@@ -124,30 +124,23 @@ class _TournamentDetailPageState extends State<TournamentDetailPage>
     super.initState();
     _navigationViews = <NavigationIconView>[
       new NavigationIconView(
-        activeIcon: new CustomIcon(),
-        icon: new CustomInactiveIcon(),
+        icon: const Icon(Icons.apps),
         title: 'Groups',
-        color: Colors.deepPurple,
         vsync: this,
       ),
       new NavigationIconView(
-        activeIcon: const Icon(Icons.cloud),
-        icon: const Icon(Icons.cloud_queue),
+        icon: const Icon(Icons.av_timer),
         title: 'Live',
-        color: Colors.teal,
-        vsync: this,
-      ),
-      new NavigationIconView(
-        activeIcon: const Icon(Icons.favorite),
-        icon: const Icon(Icons.favorite_border),
-        title: 'Results',
-        color: Colors.indigo,
         vsync: this,
       ),
       new NavigationIconView(
         icon: const Icon(Icons.event_available),
+        title: 'Results',
+        vsync: this,
+      ),
+      new NavigationIconView(
+        icon: const Icon(Icons.event),
         title: 'Schedule',
-        color: Colors.pink,
         vsync: this,
       )
     ];
