@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:volleystats/model/livestandings.dart';
 import 'package:volleystats/net/network.dart';
 import 'package:volleystats/screens/detail/detailpage.dart';
-import 'package:volleystats/screens/errorwidget.dart';
+import 'package:volleystats/widget/ErrorWidget.dart';
 import 'package:volleystats/widget/LiveStandingsList.dart';
 import 'package:volleystats/widget/WidgetUtil.dart';
 

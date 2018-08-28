@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/net/network.dart';
-import 'package:volleystats/screens/errorwidget.dart';
+import 'package:volleystats/widget/ErrorWidget.dart';
 import 'package:volleystats/widget/TournamentsGrid.dart';
 import 'package:http/http.dart' as http;
 import 'package:volleystats/widget/WidgetUtil.dart';

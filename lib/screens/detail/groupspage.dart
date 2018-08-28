@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:volleystats/model/tournamentinfo.dart';
 import 'package:volleystats/net/network.dart';
 import 'package:volleystats/screens/detail/detailpage.dart';
-import 'package:volleystats/screens/errorwidget.dart';
+import 'package:volleystats/widget/ErrorWidget.dart';
 import 'package:volleystats/widget/GroupsGrid.dart';
 import 'package:volleystats/widget/WidgetUtil.dart';
 
