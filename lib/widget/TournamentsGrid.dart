@@ -24,7 +24,6 @@ class TournamentsGrid extends StatelessWidget {
                     child: new Container(
               margin: const EdgeInsets.all(10.0),
               child: new Column(children: <Widget>[
-                Image.asset("assets/icons/ic_volleyball.png"),
                 Text(
                   tournaments.tournaments[index].name,
                 ),
