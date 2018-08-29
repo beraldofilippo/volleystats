@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:volleystats/screens/detail/detailpage.dart';
-import 'package:volleystats/screens/detail/groupspage.dart';
-import 'package:volleystats/screens/detail/livestandingspage.dart';
+import 'package:volleystats/screens/detail/DetailPage.dart';
+import 'package:volleystats/screens/detail/groups/GroupsPage.dart';
+import 'package:volleystats/screens/detail/livestandings/LiveStandingsPage.dart';
 
 class NavigationIconView {
   NavigationIconView({

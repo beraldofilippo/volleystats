@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volleystats/screens/tournamentspage.dart';
+import 'package:volleystats/screens/tournaments/TournamentsPage.dart';
 import 'package:volleystats/style/theme.dart';
 
 void main() => runApp(new MyApp());

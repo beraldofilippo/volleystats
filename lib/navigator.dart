@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volleystats/screens/detail/tournamentdetailpage.dart';
+import 'package:volleystats/screens/detail/TournamentDetailPage.dart';
 
 launchTournamentDetail(BuildContext context, String id) {
   Navigator.push(context, MaterialPageRoute(

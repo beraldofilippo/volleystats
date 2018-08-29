@@ -13,7 +13,9 @@ class SecretLoader {
     return rootBundle.loadStructuredData<Secret>(this.secretPath,
             (jsonStr) async {
           final secret = Secret.fromJson(json.decode(jsonStr));
-          return secret;
+          var completer= new Completer<Secret>();
+          completer.complete(secret);
+          return completer.future;
         });
   }
 }
