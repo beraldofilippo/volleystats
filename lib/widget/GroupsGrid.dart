@@ -15,7 +15,8 @@ class GroupsGrid extends StatelessWidget {
       ),
       itemCount: tournamentInfo.groups.length,
       itemBuilder: (context, index) {
-        if (tournamentInfo.groups != null && tournamentInfo.groups.length == 0) {
+        if (tournamentInfo.groups != null &&
+            tournamentInfo.groups.length == 0) {
           return new EmptyPageWidget();
         } else {
           return InkWell(
