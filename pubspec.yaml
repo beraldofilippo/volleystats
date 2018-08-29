@@ -73,3 +73,7 @@ flutter:
           weight: 900
         - asset: fonts/Nunito/Nunito-Italic.ttf
           style: italic
+  # https://fonts.google.com/specimen/League+Script
+    - family: LeagueScript
+      fonts:
+        - asset: fonts/League_Script/LeagueScript.ttf

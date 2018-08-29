@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:volleystats/model/livestandings.dart';
 import 'package:volleystats/model/tournamentinfo.dart';
 import 'package:volleystats/model/tournaments.dart';

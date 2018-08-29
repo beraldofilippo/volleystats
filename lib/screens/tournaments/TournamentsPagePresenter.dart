@@ -1,4 +1,3 @@
-import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/net/StatsInteractor.dart';
 import 'package:volleystats/net/StatsInteractorImpl.dart';
 import 'package:volleystats/screens/tournaments/TournamentsView.dart';

@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/screens/tournaments/TournamentsPagePresenter.dart';
 import 'package:volleystats/screens/tournaments/TournamentsView.dart';
+import 'package:volleystats/style/theme.dart';
 import 'package:volleystats/widget/ErrorWidget.dart';
 import 'package:volleystats/widget/TournamentsGrid.dart';
 import 'package:volleystats/widget/WidgetUtil.dart';
 
 class TournamentsPage extends StatefulWidget {
   TournamentsPage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -49,13 +41,23 @@ class _TournamentsPageState extends State<TournamentsPage>
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(body: createView());
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+        centerTitle: true,
+        textTheme: getAppBarTextTheme(),
+      ),
+      body: createView(),
+    );
   }
 
   @override
   Widget createView() {
     if (isError) {
-      return NetworkErrorWidget(onTapCallback: () => setState(() {resetState();}));
+      return NetworkErrorWidget(
+          onTapCallback: () => setState(() {
+                resetState();
+              }));
     } else if (isLoading) {
       return getProgressDialog();
     } else {

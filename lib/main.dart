@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Volleystats',
       theme: getThemeData(),
-      home: new TournamentsPage(title: 'Tournaments'),
+      home: new TournamentsPage(title: 'volleystats'),
     );
   }
 }

@@ -14,7 +14,8 @@ class LiveStandingsPage extends StatefulWidget {
   final DetailPage detailPage;
 
   @override
-  _LiveStandingsPageState createState() => new _LiveStandingsPageState(detailPage);
+  _LiveStandingsPageState createState() =>
+      new _LiveStandingsPageState(detailPage);
 }
 
 class _LiveStandingsPageState extends State<LiveStandingsPage>
@@ -26,8 +27,7 @@ class _LiveStandingsPageState extends State<LiveStandingsPage>
   LiveStandingsPagePresenter presenter;
 
   _LiveStandingsPageState(DetailPage detailPage) {
-    presenter =
-        LiveStandingsPagePresenter(this, detailPage.getTournamentId());
+    presenter = LiveStandingsPagePresenter(this, detailPage.getTournamentId());
   }
 
   @override
@@ -46,13 +46,18 @@ class _LiveStandingsPageState extends State<LiveStandingsPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(title: new Text(widget.title)), body: createView());
+      appBar: new AppBar(title: new Text(widget.title)),
+      body: createView(),
+    );
   }
 
   @override
   Widget createView() {
     if (isError) {
-      return NetworkErrorWidget(onTapCallback: () => setState(() {resetState();}));
+      return NetworkErrorWidget(
+          onTapCallback: () => setState(() {
+                resetState();
+              }));
     } else if (isLoading) {
       return getProgressDialog();
     } else {
