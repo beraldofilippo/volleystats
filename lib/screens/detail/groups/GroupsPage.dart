@@ -31,6 +31,10 @@ class _GroupsPageState extends State<GroupsPage> implements GroupsView {
   @override
   void initState() {
     super.initState();
+    resetState();
+  }
+
+  void resetState() {
     isLoading = true;
     isError = false;
 
@@ -52,7 +56,7 @@ class _GroupsPageState extends State<GroupsPage> implements GroupsView {
   @override
   Widget createView() {
     if (isError) {
-      return NetworkErrorWidget(onTapCallback: () => setState(() {}));
+      return NetworkErrorWidget(onTapCallback: () => setState(() {resetState();}));
     } else if (isLoading) {
       return getProgressDialog();
     } else {

@@ -55,9 +55,7 @@ class _TournamentsPageState extends State<TournamentsPage>
   @override
   Widget createView() {
     if (isError) {
-      return NetworkErrorWidget(onTapCallback: () => setState(() {
-        resetState();
-      }));
+      return NetworkErrorWidget(onTapCallback: () => setState(() {resetState();}));
     } else if (isLoading) {
       return getProgressDialog();
     } else {
