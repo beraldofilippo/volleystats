@@ -51,9 +51,11 @@ class LiveStandingsList extends StatelessWidget {
     return new ListTile(
       title: new Row(
         children: <Widget>[
-          new CircleAvatar(
+          new Padding(
+              padding: EdgeInsets.all(1.0),
+              child: new CircleAvatar(
                   radius: 12.0,
-                  child: new Text(standingsteamentry.rank.toString())),
+                  child: new Text(standingsteamentry.rank.toString()))),
           new Expanded(
             child: new Text(standingsteamentry.team.name.substring(0, 3),
                 textAlign: TextAlign.center),
