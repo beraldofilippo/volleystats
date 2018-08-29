@@ -36,7 +36,8 @@ class GroupsGrid extends StatelessWidget {
   Text getCardLayout(int index) {
     if (tournamentInfo.groups[index].name != null &&
         tournamentInfo.groups[index].name.isNotEmpty) {
-      return Text("Group " + tournamentInfo.groups[index].name);
+      return Text("Group " + tournamentInfo.groups[index].name,
+          style: TextStyle(fontFamily: 'Noto', fontWeight: FontWeight.bold));
     } else {
       return Text("Single group tournament");
     }

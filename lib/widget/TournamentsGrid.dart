@@ -16,7 +16,8 @@ class TournamentsGrid extends StatelessWidget {
       ),
       itemCount: tournaments.tournaments.length,
       itemBuilder: (context, index) {
-        if (tournaments.tournaments.length != null && tournaments.tournaments.length == 0) {
+        if (tournaments.tournaments.length != null &&
+            tournaments.tournaments.length == 0) {
           return new EmptyPageWidget();
         } else {
           return InkWell(
@@ -26,11 +27,20 @@ class TournamentsGrid extends StatelessWidget {
                   child: new Center(
                       child: new Container(
                 margin: const EdgeInsets.all(10.0),
-                child: new Column(children: <Widget>[
-                  Text(
-                    tournaments.tournaments[index].name,
-                  ),
-                ]),
+                child: new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      new Stack(
+                        children: <Widget>[
+                          Text(
+                            tournaments.tournaments[index].name,
+                            style: TextStyle(
+                                fontFamily: 'Noto',
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
+                    ]),
               ))));
         }
       },
