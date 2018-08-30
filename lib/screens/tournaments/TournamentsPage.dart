@@ -191,6 +191,9 @@ class _TournamentsPageState extends State<TournamentsPage>
         );
       }).toList();
 
+      // Add the All category manually
+      backdropItems.insert(0, getAllCategoryWidget());
+
       return new Container(
         key: _backdropKey,
         color: theme.primaryColor,
@@ -243,6 +246,23 @@ class _TournamentsPageState extends State<TournamentsPage>
       ),
       body: new LayoutBuilder(
         builder: buildStack,
+      ),
+    );
+  }
+
+  Widget getAllCategoryWidget() {
+    final bool selected = allCategory.id == _category.id;
+    return new Material(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      color: selected ? Colors.white.withOpacity(0.25) : Colors.transparent,
+      child: new ListTile(
+        title: new Text(allCategory.name),
+        selected: selected,
+        onTap: () {
+          _changeCategory(allCategory);
+        },
       ),
     );
   }
