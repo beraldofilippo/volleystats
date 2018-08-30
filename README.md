@@ -3,6 +3,10 @@
 A volley stats material design app in Flutter.  
 It uses endpoints served by *sportradar* (https://developer.sportradar.com/).  
 
+<video width="320" height="240" controls>
+  <source src="2018_08_30_17_14_05.mov" type="video/mp4">
+</video>
+
 ## Features
 MVP architecture.
 
