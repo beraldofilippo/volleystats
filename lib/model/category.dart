@@ -1,3 +1,5 @@
+import 'package:quiver/core.dart';
+
 class Category {
   String id;
   String name;
@@ -16,4 +18,7 @@ class Category {
         'id': id,
         'name': name,
       };
+
+  bool operator ==(o) => o is Category && name == o.name && id == o.id;
+  int get hashCode => hash2(name.hashCode, id.hashCode);
 }

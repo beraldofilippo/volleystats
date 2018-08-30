@@ -32,7 +32,7 @@ class _TournamentsPageState extends State<TournamentsPage>
   final GlobalKey _backdropKey = new GlobalKey(debugLabel: 'Backdrop');
   AnimationController _controller;
   final Category allCategory = new Category(Category.ID_ALL, Category.NAME_ALL);
-  Category _category = new Category(Category.ID_ALL, Category.NAME_ALL);
+  Category _currentSelectedCategory = new Category(Category.ID_ALL, Category.NAME_ALL);
 
   _TournamentsPageState() {
     presenter = TournamentsPagePresenter(this);
@@ -94,7 +94,7 @@ class _TournamentsPageState extends State<TournamentsPage>
 
   void _changeCategory(Category category) {
     setState(() {
-      _category = category;
+      _currentSelectedCategory = category;
       _controller.fling(velocity: 2.0);
     });
   }
@@ -174,18 +174,18 @@ class _TournamentsPageState extends State<TournamentsPage>
     } else {
       final ThemeData theme = Theme.of(context);
       final List<Widget> backdropItems =
-          tournaments.tournaments.map<Widget>((Tournament tournament) {
-        final bool selected = tournament.category.id == _category.id;
+          getUniqueCategories(tournaments).map<Widget>((Category category) {
+        final bool selected = category.id == _currentSelectedCategory.id;
         return new Material(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4.0)),
           ),
           color: selected ? Colors.white.withOpacity(0.25) : Colors.transparent,
           child: new ListTile(
-            title: new Text(tournament.category.name),
+            title: new Text(category.name),
             selected: selected,
             onTap: () {
-              _changeCategory(tournament.category);
+              _changeCategory(category);
             },
           ),
         );
@@ -213,9 +213,9 @@ class _TournamentsPageState extends State<TournamentsPage>
                 onTap: _toggleBackdropPanelVisibility,
                 onVerticalDragUpdate: _handleDragUpdate,
                 onVerticalDragEnd: _handleDragEnd,
-                title: new Text(_category.name),
+                title: new Text(_currentSelectedCategory.name),
                 child: new BackdropCategoryWidget(
-                  category: _category,
+                  category: _currentSelectedCategory,
                   tournaments: tournaments,
                 ),
               ),
@@ -224,6 +224,15 @@ class _TournamentsPageState extends State<TournamentsPage>
         ),
       );
     }
+  }
+
+  List<Category> getUniqueCategories(Tournaments tournaments) {
+    Set<Category> categoriesSet = new Set();
+    for(var tournament in tournaments.tournaments) {
+      categoriesSet.add(tournament.category);
+    }
+
+    return categoriesSet.toList();
   }
 
   @override
@@ -251,7 +260,7 @@ class _TournamentsPageState extends State<TournamentsPage>
   }
 
   Widget getAllCategoryWidget() {
-    final bool selected = allCategory.id == _category.id;
+    final bool selected = allCategory.id == _currentSelectedCategory.id;
     return new Material(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4.0)),
