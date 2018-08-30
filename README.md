@@ -10,8 +10,8 @@ I plan to add a couple of more features in the coming months.
 MVP architecture.  
 Error screen 
 It uses endpoints served by *sportradar* (https://developer.sportradar.com/).  
-Sometimes the API fails with a 403 Forbidden because it's using a sandbox environment which limits the call/second rate.
-I purposely did not include secret API keys so testing on this source isn't really possible unless you get a key and store is as secrets.json {"api_key" : <your key>} in the root of the project.
+Sometimes the API fails with a 403 Forbidden because it's using a sandbox environment which limits the call/second rate.  
+I purposely did not include secret API keys so testing on this source isn't really possible unless you get a key and store is as secrets.json {"api_key" : <your key>} in the root of the project. Soz.
 
 ### TODO
 Add other sub screens to the tournament details page.  
