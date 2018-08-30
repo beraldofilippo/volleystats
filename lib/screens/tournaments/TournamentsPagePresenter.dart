@@ -16,4 +16,8 @@ class TournamentsPagePresenter {
         .then((tournaments) => view.showTournaments(tournaments))
         .catchError((e) => view.showError(e));
   }
+
+  void getCategories() {
+
+  }
 }

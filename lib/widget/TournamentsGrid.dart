@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:volleystats/model/tournament.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/navigator.dart';
 import 'package:volleystats/widget/EmptyPageWidget.dart';
 
 class TournamentsGrid extends StatelessWidget {
-  final Tournaments tournaments;
+  final List<Tournament> tournamentList;
 
-  TournamentsGrid({Key key, this.tournaments}) : super(key: key);
+  TournamentsGrid({Key key, this.tournamentList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +15,15 @@ class TournamentsGrid extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200.0,
       ),
-      itemCount: tournaments.tournaments.length,
+      itemCount: tournamentList.length,
       itemBuilder: (context, index) {
-        if (tournaments.tournaments.length != null &&
-            tournaments.tournaments.length == 0) {
+        if (tournamentList.length != null &&
+            tournamentList.length == 0) {
           return new EmptyPageWidget();
         } else {
           return InkWell(
               onTap: () => launchTournamentDetail(
-                  context, tournaments.tournaments[index].id),
+                  context, tournamentList[index].id),
               child: Card(
                   child: new Center(
                       child: new Container(
@@ -33,10 +34,7 @@ class TournamentsGrid extends StatelessWidget {
                       new Stack(
                         children: <Widget>[
                           Text(
-                            tournaments.tournaments[index].name,
-                            style: TextStyle(
-                                fontFamily: 'Noto',
-                                fontWeight: FontWeight.bold),
+                            tournamentList[index].name,
                           ),
                         ],
                       )

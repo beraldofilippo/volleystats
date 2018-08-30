@@ -8,9 +8,3 @@ final ThemeData themeData = new ThemeData(
 ThemeData getThemeData() {
   return themeData;
 }
-
-TextTheme getAppBarTextTheme() {
-  return Typography(platform: TargetPlatform.fuchsia)
-      .white
-      .copyWith(title: TextStyle(fontFamily: 'LeagueScript', fontSize: 40.0));
-}
