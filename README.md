@@ -1,8 +1,8 @@
 # volleystats
 
 A volley stats material design app in Flutter.  
-I developed this during my very own 'Summer of Code 2018' to explore the potential of the platform and lean Dart.  
-I plan to add a couple of more features in the coming months.
+I developed this during my very own 'Summer of Code 2018' to explore the potential of the platform and learn Dart.  
+I plan to add a couple more features in the coming months.
 
 ![Alt Text](https://github.com/beraldofilippo/volleystats/blob/master/2018.08.30_18.04.41.gif)
 
