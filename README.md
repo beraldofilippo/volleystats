@@ -12,10 +12,11 @@ Error screen.
 Empty screens.   
 It uses endpoints served by *sportradar* (https://developer.sportradar.com/).  
 Sometimes the API fails with a 403 Forbidden because it's using a sandbox environment which limits the call/second rate.  
-I purposely did not include secret API keys so testing on this source isn't really possible unless you get a key and store is as secrets.json {"api_key" : <your key>} in the root of the project. Soz.
+n order to test this out you need a SportRadar API sandbox key, and you need to put it into the `secrets.json` file, placed in the root of the project.
 
 ### TODO
 Add other sub screens to the tournament details page.  
+Add switch to toggle between outdoor / indor volleyball.  
 Add cached responses for HTTP GETs.  
 Refine UI.
 
