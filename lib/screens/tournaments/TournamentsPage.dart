@@ -2,7 +2,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:volleystats/model/category.dart';
-import 'package:volleystats/model/tournament.dart';
 import 'package:volleystats/model/tournaments.dart';
 import 'package:volleystats/screens/tournaments/TournamentsPagePresenter.dart';
 import 'package:volleystats/screens/tournaments/TournamentsView.dart';
@@ -32,7 +31,8 @@ class _TournamentsPageState extends State<TournamentsPage>
   final GlobalKey _backdropKey = new GlobalKey(debugLabel: 'Backdrop');
   AnimationController _controller;
   final Category allCategory = new Category(Category.ID_ALL, Category.NAME_ALL);
-  Category _currentSelectedCategory = new Category(Category.ID_ALL, Category.NAME_ALL);
+  Category _currentSelectedCategory =
+      new Category(Category.ID_ALL, Category.NAME_ALL);
 
   _TournamentsPageState() {
     presenter = TournamentsPagePresenter(this);
@@ -204,9 +204,9 @@ class _TournamentsPageState extends State<TournamentsPage>
               textColor: theme.primaryTextTheme.title.color.withOpacity(0.6),
               selectedColor: theme.primaryTextTheme.title.color,
               child: new ListView(
-                  children: backdropItems,
-                ),
+                children: backdropItems,
               ),
+            ),
             new PositionedTransition(
               rect: panelAnimation,
               child: new BackdropPanel(
@@ -228,7 +228,7 @@ class _TournamentsPageState extends State<TournamentsPage>
 
   List<Category> getUniqueCategories(Tournaments tournaments) {
     Set<Category> categoriesSet = new Set();
-    for(var tournament in tournaments.tournaments) {
+    for (var tournament in tournaments.tournaments) {
       categoriesSet.add(tournament.category);
     }
 
@@ -243,15 +243,13 @@ class _TournamentsPageState extends State<TournamentsPage>
         title: new BackdropTitle(
           listenable: _controller.view,
         ),
-        actions: <Widget>[
-          new IconButton(
-            onPressed: _toggleBackdropPanelVisibility,
-            icon: new AnimatedIcon(
-              icon: AnimatedIcons.close_menu,
-              progress: _controller.view,
-            ),
+        leading: new IconButton(
+          onPressed: _toggleBackdropPanelVisibility,
+          icon: new AnimatedIcon(
+            icon: AnimatedIcons.close_menu,
+            progress: _controller.view,
           ),
-        ],
+        ),
       ),
       body: new LayoutBuilder(
         builder: buildStack,
