@@ -12,7 +12,7 @@ Error screen.
 Empty screens.   
 It uses endpoints served by *sportradar* (https://developer.sportradar.com/).  
 Sometimes the API fails with a 403 Forbidden because it's using a sandbox environment which limits the call/second rate.  
-n order to test this out you need a SportRadar API sandbox key, and you need to put it into the `secrets.json` file, placed in the root of the project.
+In order to test this out you need a SportRadar API sandbox key, and you need to put it into the `secrets.json` file, placed in the root of the project.
 
 ### TODO
 Add other sub screens to the tournament details page.  
