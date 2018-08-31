@@ -21,4 +21,4 @@ Add cached responses for HTTP GETs.
 Refine UI.
 
 ## Acnowledgements
-Icons come form FaltIcon - Icon made by Freepik from www.flaticon.com
+Icons come form FlatIcon - Icon made by Freepik from www.flaticon.com
