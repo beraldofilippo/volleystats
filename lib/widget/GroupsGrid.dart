@@ -20,14 +20,27 @@ class GroupsGrid extends StatelessWidget {
           return new EmptyPageWidget();
         } else {
           return InkWell(
-              child: Card(
-                  child: new Center(
+            child: Card(
+              child: new Center(
+                child: new Container(
+                    margin: const EdgeInsets.all(10.0),
+                    child: new Center(
                       child: new Container(
-            margin: const EdgeInsets.all(10.0),
-            child: new Column(children: <Widget>[
-              getCardLayout(index),
-            ]),
-          ))));
+                        margin: const EdgeInsets.all(10.0),
+                        child: new Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              new Stack(
+                                children: <Widget>[
+                                  getCardLayout(index),
+                                ],
+                              )
+                            ]),
+                      ),
+                    )),
+              ),
+            ),
+          );
         }
       },
     );
@@ -36,8 +49,7 @@ class GroupsGrid extends StatelessWidget {
   Text getCardLayout(int index) {
     if (tournamentInfo.groups[index].name != null &&
         tournamentInfo.groups[index].name.isNotEmpty) {
-      return Text("Group " + tournamentInfo.groups[index].name,
-          style: TextStyle(fontFamily: 'Noto', fontWeight: FontWeight.bold));
+      return Text("Group " + tournamentInfo.groups[index].name);
     } else {
       return Text("Single group tournament");
     }
