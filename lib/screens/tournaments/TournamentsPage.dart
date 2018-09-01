@@ -52,21 +52,9 @@ class _TournamentsPageState extends State<TournamentsPage>
   void resetState() {
     isLoading = true;
     isError = false;
-    Category _category = new Category(Category.ID_ALL, Category.NAME_ALL);
+    _currentSelectedCategory = new Category(Category.ID_ALL, Category.NAME_ALL);
     presenter.getTournaments();
   }
-
-//  @override
-//  Widget build(BuildContext context) {
-//    return new Scaffold(
-//      appBar: new AppBar(
-//        title: new Text(widget.title),
-//        centerTitle: true,
-//        textTheme: getAppBarTextTheme(),
-//      ),
-//      body: createView(),
-//    );
-//  }
 
   @override
   void showError(e) {
