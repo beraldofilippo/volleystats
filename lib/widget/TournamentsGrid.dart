@@ -19,30 +19,34 @@ class TournamentsGrid extends StatelessWidget {
         if (tournamentList.length != null && tournamentList.length == 0) {
           return new EmptyPageWidget();
         } else {
-          return Card(
-            child: InkWell(
-              onTap: () =>
-                  launchTournamentDetail(context, tournamentList[index].id),
-              child: new Center(
-                child: new Container(
-                  margin: const EdgeInsets.all(10.0),
-                  child: new Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        new Stack(
-                          children: <Widget>[
-                            Text(
-                              tournamentList[index].name,
-                            ),
-                          ],
-                        )
-                      ]),
-                ),
-              ),
-            ),
-          );
+          return getCard(context, tournamentList[index]);
         }
       },
+    );
+  }
+
+  Card getCard(BuildContext context, Tournament tournament) {
+    return Card(
+      child: InkWell(
+        onTap: () =>
+            launchTournamentDetail(context, tournament.id),
+        child: new Center(
+          child: new Container(
+            margin: const EdgeInsets.all(10.0),
+            child: new Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  new Stack(
+                    children: <Widget>[
+                      Text(
+                        tournament.name,
+                      ),
+                    ],
+                  )
+                ]),
+          ),
+        ),
+      ),
     );
   }
 }
