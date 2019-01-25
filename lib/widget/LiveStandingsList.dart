@@ -19,6 +19,7 @@ class LiveStandingsList extends StatelessWidget {
       for (var standings in livestandings.standings) {
         for (var standingsgroup in standings.groups) {
           var secondaryTiles = List<Widget>();
+          secondaryTiles.add(buildListTileRowLabels());
           for (var standingsteamentry in standingsgroup.team_standings) {
             secondaryTiles.add(buildListTileRow(standingsteamentry));
           }
@@ -90,6 +91,61 @@ class LiveStandingsList extends StatelessWidget {
           ),
           new Expanded(
             child: new Text(standingsteamentry.score_diff.toString(),
+                textAlign: TextAlign.center),
+          ),
+//          new Expanded(
+//            child: new FittedBox(
+//              fit: BoxFit.contain, // otherwise the logo will be tiny
+//              child: const FlutterLogo(),
+//            ),
+//          ),
+        ],
+      ),
+    );
+  }
+
+  buildListTileRowLabels() {
+    return new ListTile(
+      title: new Row(
+        children: <Widget>[
+          new Padding(
+              padding: EdgeInsets.all(1.0),
+              child: new CircleAvatar(
+                  radius: 12.0)),
+          new Expanded(
+            child: new Text("   ",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("Pts",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("Pld",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("W",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("D",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("L",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("For",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("Ags",
+                textAlign: TextAlign.center),
+          ),
+          new Expanded(
+            child: new Text("Dif",
                 textAlign: TextAlign.center),
           ),
 //          new Expanded(
