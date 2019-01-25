@@ -19,10 +19,10 @@ class TournamentsGrid extends StatelessWidget {
         if (tournamentList.length != null && tournamentList.length == 0) {
           return new EmptyPageWidget();
         } else {
-          return InkWell(
-            onTap: () =>
-                launchTournamentDetail(context, tournamentList[index].id),
-            child: Card(
+          return Card(
+            child: InkWell(
+              onTap: () =>
+                  launchTournamentDetail(context, tournamentList[index].id),
               child: new Center(
                 child: new Container(
                   margin: const EdgeInsets.all(10.0),
